@@ -1,0 +1,57 @@
+ .dropdown-toggle,.navbar-brand,#logout {
+	color: black !important;
+}
+
+.navbar {
+	/*background-color:rgb(0,136,204);*/
+	/*background-color:rgb(94,127,159);*/
+	background-color: rgb(201, 216, 229);
+}
+
+.nav {
+	font-size: 14px;
+	/*background-color: rgb(94, 127, 159);*/
+	/*background-color:rgb(60,182,154);*/
+	/*background-color:rgb(0,136,204);*/
+}
+
+.dropdown-menu {
+	font-size: 12px;
+}
+
+.menu-bg {
+	/*background-color:rgb(199,237,252) !important;*/
+	background-color: #ccc !important;
+	/*background-color:rgb(35,83,105);*/
+}
+
+.image {
+	padding: 3px;
+	margin: 3px 10px;
+	width: 110px;
+	height: 41px;
+}
+
+.purchase {
+	background-color:rgb(251,192,145);
+}
+
+.sale {
+	background-color: rgb(132, 215, 186);
+}
+
+.make {
+	background-color: rgb(135, 206, 235);
+}
+
+.ware {
+	background-color: rgb(255, 182, 193);
+}
+
+.wareto {
+	background-color: rgb(210, 193, 227);
+}
+
+.setting {
+	background-color:rgb(132,193,255);
+}

@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.0" 
+	xmlns="http://java.sun.com/xml/ns/javaee" 
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee 
+	http://java.sun.com/xml/ns/javaee/web-app_3_0.xsd">  
+	
+  <context-param>
+	<param-name>contextConfigLocation</param-name>
+	<param-value>/WEB-INF/classes/com/it/context/base/application.xml,/WEB-INF/classes/com/it/context/base/mybatis-application.xml,/WEB-INF/classes/com/it/context/*.xml</param-value>
+  </context-param>
+  
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+ 
+  <servlet>
+	<servlet-name>springServlet</servlet-name>
+	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+	<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>/WEB-INF/classes/com/it/context/base/springAction.xml</param-value>
+	</init-param>
+	<load-on-startup>2</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>springServlet</servlet-name>
+	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+  	<servlet-name>remote</servlet-name>
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>  
+    	<param-name>contextConfigLocation</param-name>
+    	<param-value>/WEB-INF/classes/com/it/context/hession-server.xml</param-value>  
+    </init-param>
+    <load-on-startup>3</load-on-startup>
+  </servlet>    
+  <servlet-mapping>
+    <servlet-name>remote</servlet-name>
+    <url-pattern>/remote/*</url-pattern>
+  </servlet-mapping>
+    
+  <listener>
+    <listener-class>com.it.common.share.SpringBeanStore</listener-class>
+  </listener>
+  
+  <listener>
+    <listener-class>com.it.common.share.AppSessionListener</listener-class>
+  </listener>
+ <!--  
+  <listener>  
+    <listener-class>com.it.apps.hait.gather.GatherListener</listener-class>  
+  </listener>
+-->
+
+  <filter>
+		<filter-name>appFilter</filter-name>
+		<filter-class>com.it.apps.nina._share.security.BaseAppFilter</filter-class>
+		<!-- <filter-class>com.it.common.share.AppFilter</filter-class> -->
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>pass</param-name>
+			<param-value>*/login.do,*/loginCheck.do,*/logout.do,*/register.do</param-value>
+		</init-param>
+		<init-param>
+			<param-name>out</param-name>
+			<param-value></param-value>
+		</init-param>
+	</filter>
+	
+	<filter-mapping>
+		<filter-name>appFilter</filter-name>
+		<servlet-name>springServlet</servlet-name>
+	</filter-mapping>
+  
+  <welcome-file-list>
+    <welcome-file>/index.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <error-page>
+      <error-code>404</error-code>
+      <location>/index.jsp</location>
+  </error-page>
+  
+   <error-page> 
+      <error-code>500</error-code> 
+      <location>/error.jsp</location> 
+  </error-page> 
+  
+  <session-config>
+  	  <session-timeout>480</session-timeout>
+  </session-config>
+  
+</web-app>

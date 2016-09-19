@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>  
+ <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"   
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">  
+<mapper namespace="com.it.apps.nina.index.IndexMapper"> 
+  	
+    
+    <!-- <insert id="saveUser" parameterType="com.it.apps.nina.setting.user.User"  keyProperty="USER_ID"  useGeneratedKeys="true">
+       insert into users (LOGIN_NM,PASSWORD,USER_NM,USER_DPT,SHOW_PRICE,VALID,INVALID_DAY,LOCKID,CREATE_DAY,MODIFY_DAY,CREATOR,MODIFIER) values 
+      (#{loginNm},#{password},#{userNm},#{userDpt},#{showPrice},#{valid},#{invalidDay},#{lockid},#{createDay},#{modifyDay},#{creator},#{modifier})
+    </insert>
+    <select id="findUsers" parameterType="java.util.HashMap" resultMap="userMap">
+        select * from users 
+        <include refid="orderBy"></include>
+    </select>
+    <select id="findUserById" resultMap="userMap" parameterType="java.lang.String">
+        select * from users where USER_ID=#{userId}
+    </select>
+    <select id="findUserDpts" resultType="java.util.HashMap">
+       select * from dict where DICT_TYPE='07' and VALID='1'
+    </select>
+    <update id="updateUser" parameterType="com.it.apps.nina.setting.user.User">
+       update users set LOGIN_NM=#{loginNm},USER_NM=#{userNm},USER_DPT=#{user_dpt},SHOW_PRICE=#{showPrice},VALID=#{valid},INVALID_DAY=#{invalidDay},
+       LOCDID=#{lockid},MODIFY_DAY=#{modifyDay},MODIFIER=#{modifier} where USER_ID=#{userId}
+    </update> 
+    
+    
+    <sql id="orderBy">and password=#{password}
+      order by LOGIN_NM
+    </sql>-->
+    <select id="getMenuMap" resultType="java.util.HashMap" parameterType="java.lang.String">		
+		select r.*, a.app_url from (select IFNULL(m.app_id,2) app_id, m.menu_id,m.menu_nm,m.menu_path,m.menu_type,m.menu_url,m.valid,o.operation_id,o.operation_nm 
+		from menus m,operations o,users_mo um,menu_operation mo
+		where o.operation_id=mo.operation_id and m.menu_id=mo.menu_id and um.menu_operation_id=mo.menu_operation_id and um.user_id=#{userId}) r, apps a where r.app_id = a.app_id
+		order by r.menu_id
+    </select>
+    <select id="getIndexUserDto" resultType="com.it.apps.nina.index.IndexUserDto" parameterType="java.lang.String">
+    	select * from users where valid='1' and login_nm=#{login_nm} 
+    </select>
+    <select id="getUserDto" resultType="com.it.apps.nina._share.bo.UserDto" parameterType="java.lang.String">
+    	select * from users where login_nm=#{login_nm} 
+    </select>
+    <select id="getCompanyDto" resultType="com.it.apps.nina._share.bo.CompanyDto" >
+    	select * from company  
+    </select>
+
+</mapper>  
+
+

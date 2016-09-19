@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE taglib PUBLIC "-//Sun Microsystems, Inc.//DTD JSP Tag Library 1.1//EN" 
+"http://java.sun.com/j2ee/dtds/web-jsptaglibrary_1_1.dtd">
+
+<taglib>
+   <tlibversion>1.0</tlibversion>
+   <jspversion>1.2</jspversion>
+   <shortname>scr</shortname>
+   <uri>http://www.sunrex.co/scr</uri>
+   <info>screen infomation</info>
+   
+   <tag>
+    <name>page</name>
+    <tagclass>com.it.common.component.page.PageTag</tagclass>
+    <bodycontent>empty</bodycontent>
+    <info>divide page</info>
+    
+    <attribute>
+    <name>action</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+    <name>formIndex</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <!-- <attribute>
+    <name>pageRows</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute> -->
+    
+    <attribute>
+    <name>unit</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  <tag>
+    <name>numFormat</name>
+    <tagclass>com.it.common.component.meta.tag.NumFormatTag</tagclass>
+    <bodycontent>jsp</bodycontent>
+    <info>format number</info>
+    
+    <attribute>
+    <name>type</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+    <name>dotNum</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  <tag>
+    <name>html</name>
+    <tagclass>com.it.common.component.meta.tag.ScrHtmlTag</tagclass>
+    <bodycontent>jsp</bodycontent>
+    <info>print html to screen</info>
+    
+    <attribute>
+    <name>html5</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+    <name>html4</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+   
+  <tag>
+    <name>body</name>
+    <tagclass>com.it.common.component.meta.tag.ScrBodyTag</tagclass>
+    <bodycontent>jsp</bodycontent>
+    <info>print body, include error and log</info>
+    
+    <attribute>
+    <name>errDiv</name>
+    <required>true</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+    <name>onload</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+    <name>showEmpty</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+    <name>docFocus</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+    <name>firstFocus</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+  <tag>
+    <name>head</name>
+    <tagclass>com.it.apps.nina._share.tag.NinaScrHeadTag</tagclass>
+    <bodycontent>jsp</bodycontent>
+    <info>print head to screen</info>
+    
+    <attribute>
+    <name>title</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+    <name>land</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+    <name>menuId</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag>
+  
+ <!--  <tag>
+    <name>show</name>
+    <tagclass>com.it.apps.nina._share.tag.NinaShowTag</tagclass>
+    <bodycontent>jsp</bodycontent>
+    <info>show item</info>
+    
+    <attribute>
+    <name>type</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+    
+    <attribute>
+    <name>operationId</name>
+    <required>false</required>
+    <rtexprvalue>true</rtexprvalue>
+    </attribute>
+  </tag> -->
+  
+  <tag>
+    <name>menu</name>
+    <tagclass>com.it.apps.nina._share.tag.NinaMenuTag</tagclass>
+    <bodycontent>jsp</bodycontent>
+    <info>print menu to screen</info>
+  </tag>
+  
+  
+  
+</taglib>

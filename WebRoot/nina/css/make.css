@@ -1,0 +1,30 @@
+body{
+	background-color:rgb(222,242,250);
+}
+
+
+.label-bg{
+  background-color: rgb(135, 206, 235);
+}
+
+.tr-next{
+  background-color:rgb(200,240,240);
+}
+
+.td_color{
+	background-color: rgb(135, 206, 235);
+	font-weight:bold;
+}
+.tr_bottom_line{
+	border-bottom:1.5px solid rgb(135, 206, 235);
+}
+.dotted_bottom_line{
+	border-bottom:1.5px dashed rgb(135, 206, 235);
+}
+.dotted_top_line{
+	border-top:1.5px dashed rgb(135, 206, 235);
+}
+
+.tr_top_line{
+	border-top:1.5px solid rgb(135, 206, 235);
+}

@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jee="http://www.springframework.org/schema/jee" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+ 		http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+ 		http://www.springframework.org/schema/aop
+		http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+ 		http://www.springframework.org/schema/tx
+ 		http://www.springframework.org/schema/tx/spring-tx-3.2.xsd
+ 		http://www.springframework.org/schema/jee
+ 		http://www.springframework.org/schema/jee/spring-jee-3.2.xsd
+ 		http://www.springframework.org/schema/context
+ 		http://www.springframework.org/schema/context/spring-context-3.2.xsd
+ 		http://www.springframework.org/schema/util
+        http://www.springframework.org/schema/util/spring-util-3.0.xsd">
+  
+	<bean class="org.springframework.web.servlet.handler.BeanNameUrlHandlerMapping" p:order="1" />
+	
+	<!-- HttpRequestHandlerAdapter 在这里面非常关键,没有它可能会出现这种错误:No adapter for handler Does your handler implement a supported interface like Controller ?
+	HttpRequestHandlerAdapter它的作用就是让spring-mvc放出权限给下面的Exporter自己处理整个HTTP 流程.毕竟HessianServiceExporter也是实现的HttpRequestHandler -->
+	<bean class="org.springframework.web.servlet.mvc.HttpRequestHandlerAdapter" />
+          
+    <bean id="systemDtoBoImpl" class="com.it.apps.nina._share.remote.SystemDtoBoImpl" />  
+    
+    <bean name="/systemDtoBo" class="org.springframework.remoting.caucho.HessianServiceExporter"  
+        p:serviceInterface="com.it.apps.nina._share.remote.SystemDtoBo" p:service-ref="systemDtoBoImpl" /> 
+        
+    <bean id="menuStrBoImpl" class="com.it.apps.nina._share.remote.MenuStrBoImpl" />  
+    
+    <bean name="/menuStrBo" class="org.springframework.remoting.caucho.HessianServiceExporter"  
+        p:serviceInterface="com.it.apps.nina._share.remote.MenuStrBo" p:service-ref="menuStrBoImpl" />  
+
+    <!-- 如果实现类如appsBoImpl已经使用@Repository或@Service注入spring，可以直接使用，不需要在本xml中声明实现类（如果本xml声明，以本xml的优先，appsBoImpl中的@Resource的成员变量为null） -->
+    <bean name="/appsBo" class="org.springframework.remoting.caucho.HessianServiceExporter"  
+        p:serviceInterface="com.it.apps.nina._share.remote.AppsBo" p:service-ref="appsBoImpl" />
+        
+    <bean name="/dateBo" class="org.springframework.remoting.caucho.HessianServiceExporter"  
+        p:serviceInterface="com.it.apps.nina._share.remote.DateBo" p:service-ref="dateBoImpl" />
+        
+   <!-- ============================================================================================================================================================= -->
+        
+    <bean name="/productRBo" class="org.springframework.remoting.caucho.HessianServiceExporter"  
+        p:serviceInterface="com.it.apps.nina.remote.ProductRBo" p:service-ref="productRBoImpl" />  
+
+</beans>
